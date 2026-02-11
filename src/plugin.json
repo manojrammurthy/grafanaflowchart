@@ -41,11 +41,11 @@
     "links": [
       {
         "name": "GitHub",
-        "url": "https://github.com/manojrammurthy/flowcharting-panel"
+        "url": "https://github.com/manojrammurthy/grafanaflowchart"
       },
       {
         "name": "License",
-        "url": "https://github.com/manojrammurthy/flowcharting-panel/blob/main/LICENSE"
+        "url": "https://github.com/manojrammurthy/grafanaflowchart/blob/main/LICENSE"
       }
     ]
   },
