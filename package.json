@@ -1,5 +1,5 @@
 {
-  "name": "manojflowcharting-flowcharting-panel",
+  "name": "manojramoorthy-flowcharting-panel",
   "version": "1.0.0",
   "description": "Draw.io/mxGraph diagram visualization with data-driven state from metric thresholds",
   "main": "dist/module.js",
