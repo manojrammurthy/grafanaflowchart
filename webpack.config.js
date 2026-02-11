@@ -2,7 +2,8 @@ const path = require('path');
 const CopyPlugin = require('copy-webpack-plugin');
 
 module.exports = {
-  entry: './src/module.tsx',
+  context: path.resolve(__dirname, 'src'),
+  entry: './module.tsx',
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'module.js',
@@ -27,11 +28,11 @@ module.exports = {
   plugins: [
     new CopyPlugin({
       patterns: [
-        { from: 'src/plugin.json', to: 'plugin.json' },
-        { from: 'src/img', to: 'img', noErrorOnMissing: true },
-        { from: 'README.md', to: 'README.md', noErrorOnMissing: true },
-        { from: 'LICENSE', to: '.', noErrorOnMissing: true },
-        { from: 'CHANGELOG.md', to: 'CHANGELOG.md', noErrorOnMissing: true },
+        { from: path.resolve(__dirname, 'src/plugin.json'), to: 'plugin.json' },
+        { from: path.resolve(__dirname, 'src/img'), to: 'img', noErrorOnMissing: true },
+        { from: path.resolve(__dirname, 'README.md'), to: 'README.md', noErrorOnMissing: true },
+        { from: path.resolve(__dirname, 'LICENSE'), to: '.', noErrorOnMissing: true },
+        { from: path.resolve(__dirname, 'CHANGELOG.md'), to: 'CHANGELOG.md', noErrorOnMissing: true },
       ],
     }),
   ],
