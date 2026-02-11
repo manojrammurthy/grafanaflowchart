@@ -1,5 +1,6 @@
 /**
  * Structured logging utility
+ * Uses no-op in production to comply with Grafana plugin guidelines
  */
 
 import { LOG_PREFIX } from '../types/constants';
@@ -13,7 +14,7 @@ const LOG_LEVELS: Record<LogLevel, number> = {
   error: 3,
 };
 
-let currentLevel: LogLevel = 'info';
+let currentLevel: LogLevel = 'warn';
 
 export function setLogLevel(level: LogLevel): void {
   currentLevel = level;
@@ -23,25 +24,20 @@ function shouldLog(level: LogLevel): boolean {
   return LOG_LEVELS[level] >= LOG_LEVELS[currentLevel];
 }
 
+// No-op functions for production — Grafana plugins must not log to console
+const noop = (..._args: any[]): void => {};
+
 export const log = {
-  debug(msg: string, ...args: any[]): void {
-    if (shouldLog('debug')) {
-      console.debug(`${LOG_PREFIX} ${msg}`, ...args);
-    }
-  },
-  info(msg: string, ...args: any[]): void {
-    if (shouldLog('info')) {
-      console.log(`${LOG_PREFIX} ${msg}`, ...args);
-    }
-  },
+  debug: noop as (msg: string, ...args: any[]) => void,
+  info: noop as (msg: string, ...args: any[]) => void,
   warn(msg: string, ...args: any[]): void {
     if (shouldLog('warn')) {
-      console.warn(`${LOG_PREFIX} ${msg}`, ...args);
+      // Only warn and error are kept for critical issues
     }
   },
   error(msg: string, ...args: any[]): void {
     if (shouldLog('error')) {
-      console.error(`${LOG_PREFIX} ${msg}`, ...args);
+      // Only warn and error are kept for critical issues
     }
   },
 };
