@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FF9830;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#F2495C;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="fg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#73BF69;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#418AB3;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <!-- Background rounded square -->
+  <rect x="2" y="2" width="60" height="60" rx="12" ry="12" fill="url(#bg)" />
+  <!-- Flowchart diagram icon -->
+  <!-- Top box -->
+  <rect x="20" y="8" width="24" height="12" rx="2" ry="2" fill="url(#fg)" stroke="white" stroke-width="1.5" />
+  <!-- Middle left box -->
+  <rect x="8" y="28" width="20" height="12" rx="2" ry="2" fill="url(#fg)" stroke="white" stroke-width="1.5" />
+  <!-- Middle right box -->
+  <rect x="36" y="28" width="20" height="12" rx="2" ry="2" fill="url(#fg)" stroke="white" stroke-width="1.5" />
+  <!-- Bottom box -->
+  <rect x="20" y="48" width="24" height="12" rx="2" ry="2" fill="url(#fg)" stroke="white" stroke-width="1.5" />
+  <!-- Connecting lines -->
+  <line x1="32" y1="20" x2="18" y2="28" stroke="white" stroke-width="1.5" />
+  <line x1="32" y1="20" x2="46" y2="28" stroke="white" stroke-width="1.5" />
+  <line x1="18" y1="40" x2="32" y2="48" stroke="white" stroke-width="1.5" />
+  <line x1="46" y1="40" x2="32" y2="48" stroke="white" stroke-width="1.5" />
+  <!-- Data pulse dots -->
+  <circle cx="25" cy="24" r="2" fill="white" opacity="0.9" />
+  <circle cx="39" cy="24" r="2" fill="white" opacity="0.9" />
+  <circle cx="25" cy="44" r="2" fill="white" opacity="0.9" />
+  <circle cx="39" cy="44" r="2" fill="white" opacity="0.9" />
+</svg>

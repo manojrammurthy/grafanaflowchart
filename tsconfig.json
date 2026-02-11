@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "target": "ES2015",
+    "module": "commonjs",
+    "jsx": "react",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "resolveJsonModule": true,
+    "moduleResolution": "node",
+    "baseUrl": "./src",
+    "outDir": "./dist",
+    "sourceMap": true,
+    "declaration": false,
+    "lib": ["ES2015", "DOM", "DOM.Iterable"]
+  },
+  "include": ["src/**/*"]
+}

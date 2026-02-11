@@ -1,0 +1,60 @@
+{
+  "type": "panel",
+  "name": "Flowcharting",
+  "id": "manojflowcharting-flowcharting-panel",
+  "info": {
+    "description": "Draw.io/mxGraph diagram visualization with data-driven state (color, text, links, animations) from metric thresholds",
+    "author": {
+      "name": "manoj-Flowcharting",
+      "url": "https://github.com/manojrammurthy"
+    },
+    "keywords": [
+      "flowchart",
+      "diagram",
+      "drawio",
+      "draw.io",
+      "mxgraph",
+      "svg",
+      "architecture",
+      "network",
+      "topology",
+      "floor plan",
+      "temperature",
+      "monitoring"
+    ],
+    "version": "1.0.0",
+    "updated": "2026-02-10",
+    "logos": {
+      "small": "img/logo.svg",
+      "large": "img/logo.svg"
+    },
+    "screenshots": [
+      {
+        "name": "Floor Plan with Gradient Colors",
+        "path": "img/screenshot-floorplan.png"
+      },
+      {
+        "name": "House Plan Temperature Monitor",
+        "path": "img/screenshot-houseplan.png"
+      },
+      {
+        "name": "Tooltip with Sparkline Graph",
+        "path": "img/screenshot-tooltip.png"
+      }
+    ],
+    "links": [
+      {
+        "name": "GitHub",
+        "url": "https://github.com/manojrammurthy/flowcharting-panel"
+      },
+      {
+        "name": "License",
+        "url": "https://github.com/manojrammurthy/flowcharting-panel/blob/main/LICENSE"
+      }
+    ]
+  },
+  "dependencies": {
+    "grafanaDependency": ">=10.0.0",
+    "plugins": []
+  }
+}
