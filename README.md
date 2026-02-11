@@ -21,10 +21,6 @@ A Grafana panel plugin for rendering Draw.io/mxGraph diagrams with data-driven v
 
 ## Screenshots
 
-### Floor Plan with Gradient Temperature Colors
-![Floor Plan](src/img/screenshot-floorplan.png)
-Rooms change color based on gradient temperature thresholds. Click buttons navigate to related dashboards.
-
 ### House Plan Temperature Monitor
 ![House Plan](src/img/screenshot-houseplan.png)
 1200 sq ft house plan with 10 temperature sensors mapped to rooms via CSV datasource.
