@@ -3,7 +3,7 @@
 A Grafana panel plugin for rendering Draw.io/mxGraph diagrams with data-driven visualization. Map your metrics to diagram elements — change colors, text, links, and animations based on real-time data thresholds.
 
 [![Grafana](https://img.shields.io/badge/Grafana-10.0%2B-orange)](https://grafana.com)
-[![License](https://img.shields.io/badge/license-Apache%202.0-blue)](LICENSE)
+[![License](https://img.shields.io/badge/license-Apache%202.0-blue)](https://github.com/manojrammurthy/grafanaflowchart/blob/main/LICENSE)
 [![Plugin Type](https://img.shields.io/badge/type-panel-green)](https://grafana.com/grafana/plugins/)
 
 ## Features
@@ -22,11 +22,11 @@ A Grafana panel plugin for rendering Draw.io/mxGraph diagrams with data-driven v
 ## Screenshots
 
 ### House Plan Temperature Monitor
-![House Plan](src/img/screenshot-houseplan.png)
+![House Plan](https://raw.githubusercontent.com/manojrammurthy/grafanaflowchart/main/src/img/screenshot-houseplan.png)
 1200 sq ft house plan with 10 temperature sensors mapped to rooms via CSV datasource.
 
 ### Tooltip with Sparkline Graph
-![Tooltip](src/img/screenshot-tooltip.png)
+![Tooltip](https://raw.githubusercontent.com/manojrammurthy/grafanaflowchart/main/src/img/screenshot-tooltip.png)
 Hover tooltip showing metric name, formatted value, threshold status, timestamp, and temperature trend sparkline.
 
 ## Installation
@@ -67,7 +67,7 @@ allow_loading_unsigned_plugins = manojflowcharting-flowcharting-panel
 5. **Add rules** to map metrics to diagram cells
 6. **Set thresholds** to define color ranges
 
-See [SETUP-GUIDE.md](SETUP-GUIDE.md) for the complete configuration reference.
+See [SETUP-GUIDE.md](https://github.com/manojrammurthy/grafanaflowchart/blob/main/SETUP-GUIDE.md) for the complete configuration reference.
 
 ## Rule Configuration
 
@@ -152,7 +152,7 @@ Source Structure:
 
 ## License
 
-[Apache License 2.0](LICENSE)
+[Apache License 2.0](https://github.com/manojrammurthy/grafanaflowchart/blob/main/LICENSE)
 
 ## Acknowledgments
 
