@@ -38,7 +38,7 @@ Search for **"Flowcharting"** in the Grafana plugin catalog and click Install.
 ### From Source
 
 ```bash
-git clone https://github.com/manojrammurthy/flowcharting-panel.git
+git clone https://github.com/manojrammurthy/grafanaflowchart.git
 cd flowcharting-panel
 npm install --legacy-peer-deps
 npm run build
