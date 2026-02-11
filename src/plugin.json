@@ -30,10 +30,6 @@
     },
     "screenshots": [
       {
-        "name": "Floor Plan with Gradient Colors",
-        "path": "img/screenshot-floorplan.png"
-      },
-      {
         "name": "House Plan Temperature Monitor",
         "path": "img/screenshot-houseplan.png"
       },
