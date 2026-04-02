@@ -64,6 +64,15 @@ export const RuleEditor: React.FC<RuleEditorProps> = ({ rule, onChange }) => {
             />
           </div>
           <div className={styles.field}>
+            <label className={styles.label}>Column</label>
+            <Input
+              value={rule.column}
+              onChange={(e) => update('column', e.currentTarget.value)}
+              placeholder="e.g. device_id or MAC address"
+              width={24}
+            />
+          </div>
+          <div className={styles.field}>
             <label className={styles.label}>Aggregation</label>
             <Select
               options={aggOptions}

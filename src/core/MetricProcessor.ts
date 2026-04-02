@@ -90,8 +90,10 @@ export function processDataFrames(
         }
       } else {
         // Wide-format: each column is a separate metric (e.g. MAC address columns)
-        // The field name IS the metric/column identifier
-        const name = fieldNameClean || frame.name || frame.refId || '';
+        // For PostgreSQL time_series (metricColumn), frame.name holds the series identifier (e.g. device_mac value).
+        // For CSV wide-format, field.name holds the MAC column name and frame.name is generic/refId.
+        const frameNameIsDistinct = frame.name && frame.name !== frame.refId;
+        const name = (frameNameIsDistinct ? frame.name : null) || fieldNameClean || frame.name || frame.refId || '';
         metrics.push({
           name,
           refId: frame.refId || '',
