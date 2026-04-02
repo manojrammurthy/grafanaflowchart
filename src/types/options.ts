@@ -91,6 +91,7 @@ export interface RuleOptions {
   metricType: MetricType;
   pattern: string; // metric name/alias regex
   alias: string;
+  refId: string; // query refId to scope this rule to (e.g. "A", "B")
   column: string; // column name for table metric matching (e.g. MAC address)
   aggregation: AggregationType;
   // Thresholds
@@ -246,6 +247,7 @@ export function createDefaultRule(): RuleOptions {
     metricType: 'series',
     pattern: '.*',
     alias: '',
+    refId: '',
     column: '',
     aggregation: 'current',
     thresholds: [

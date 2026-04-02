@@ -4,7 +4,7 @@
 
 import React, { useState } from 'react';
 import { css } from '@emotion/css';
-import { StandardEditorProps } from '@grafana/data';
+import { StandardEditorProps, FieldType } from '@grafana/data';
 import { useTheme2, Button, InlineSwitch } from '@grafana/ui';
 import { GrafanaTheme2 } from '@grafana/data';
 import { RuleOptions, FlowchartPanelOptions, createDefaultRule } from '../types/options';
@@ -17,6 +17,39 @@ export const RulesEditor: React.FC<RulesEditorProps> = ({ value, onChange, conte
   const styles = getStyles(theme);
   const rules = value || [];
   const [expandedId, setExpandedId] = useState<string | null>(null);
+
+  // Extract available column values from panel data frames
+  const frames: any[] = Array.isArray(context?.data) ? (context.data as any[]) : [];
+
+  const refIdSet = new Set<string>();
+  const metricSet = new Set<string>();
+
+  const timeFieldNames = new Set(['time', 'timestamp', 'Time', 'Timestamp', '_time']);
+
+  for (const frame of frames) {
+    if (frame.refId) {
+      refIdSet.add(frame.refId);
+    }
+    // Wide format: each field (except time) is a column/metric (e.g. MAC address)
+    for (const field of (frame.fields ?? [])) {
+      const name: string = field.name ?? '';
+      if (!name || timeFieldNames.has(name) || field.type === 'time') {
+        continue;
+      }
+      metricSet.add(name);
+    }
+    // Pivoted format: "metric" column holds device IDs as values
+    const metricField = frame.fields?.find((f: any) => f.name === 'metric' || f.name === 'Metric');
+    if (metricField) {
+      const vals: any[] = Array.isArray(metricField.values) ? metricField.values : (metricField.values?.toArray?.() ?? []);
+      for (const v of vals) {
+        if (v) metricSet.add(String(v));
+      }
+    }
+  }
+
+  const queryOptions = Array.from(refIdSet).map((id) => ({ label: `Query ${id}`, value: id }));
+  const metricOptions = Array.from(metricSet).sort().map((m) => ({ label: m, value: m }));
 
   const addRule = () => {
     const newRule = createDefaultRule();
@@ -132,6 +165,8 @@ export const RulesEditor: React.FC<RulesEditorProps> = ({ value, onChange, conte
             <RuleEditor
               rule={rule}
               onChange={(updated) => updateRule(rule.id, updated)}
+              queryOptions={queryOptions}
+              metricOptions={metricOptions}
             />
           )}
         </div>

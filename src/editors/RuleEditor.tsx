@@ -7,7 +7,7 @@ import { css } from '@emotion/css';
 import { useTheme2, Input, Select, InlineSwitch, CollapsableSection } from '@grafana/ui';
 import { GrafanaTheme2 } from '@grafana/data';
 import { RuleOptions } from '../types/options';
-import { AGGREGATION_TYPES, METRIC_TYPES, AggregationType, MetricType } from '../types/constants';
+import { AGGREGATION_TYPES, AggregationType } from '../types/constants';
 import { ThresholdEditor } from './ThresholdEditor';
 import { ShapeMapEditor } from './ShapeMapEditor';
 import { TextMapEditor } from './TextMapEditor';
@@ -19,12 +19,13 @@ import { RangeMapEditor } from './RangeMapEditor';
 interface RuleEditorProps {
   rule: RuleOptions;
   onChange: (rule: RuleOptions) => void;
+  queryOptions: Array<{ label: string; value: string }>;
+  metricOptions: Array<{ label: string; value: string }>;
 }
 
 const aggOptions = AGGREGATION_TYPES.map((a) => ({ label: a, value: a }));
-const metricTypeOptions = METRIC_TYPES.map((m) => ({ label: m, value: m }));
 
-export const RuleEditor: React.FC<RuleEditorProps> = ({ rule, onChange }) => {
+export const RuleEditor: React.FC<RuleEditorProps> = ({ rule, onChange, queryOptions, metricOptions }) => {
   const theme = useTheme2();
   const styles = getStyles(theme);
 
@@ -45,33 +46,36 @@ export const RuleEditor: React.FC<RuleEditorProps> = ({ rule, onChange }) => {
               width={20}
             />
           </div>
+
+          {/* Apply to Query (refId) */}
           <div className={styles.field}>
-            <label className={styles.label}>Metric Type</label>
+            <label className={styles.label}>Apply to Query</label>
             <Select
-              options={metricTypeOptions}
-              value={metricTypeOptions.find((o) => o.value === rule.metricType)}
-              onChange={(v) => update('metricType', v.value as MetricType)}
-              width={14}
+              options={queryOptions}
+              value={rule.refId ? { label: `Query ${rule.refId}`, value: rule.refId } : null}
+              onChange={(v) => update('refId', v?.value ?? '')}
+              placeholder="Select query"
+              isClearable
+              allowCustomValue
+              width={20}
             />
           </div>
+
+          {/* Apply to Column (column = device_id / metric value) */}
           <div className={styles.field}>
-            <label className={styles.label}>Alias / Pattern</label>
-            <Input
-              value={rule.alias}
-              onChange={(e) => update('alias', e.currentTarget.value)}
-              placeholder="Metric name or regex"
-              width={24}
+            <label className={styles.label}>Apply to Column</label>
+            <Select
+              options={metricOptions}
+              value={rule.column ? { label: rule.column, value: rule.column } : null}
+              onChange={(v) => update('column', v?.value ?? '')}
+              placeholder="Select or type column value"
+              isClearable
+              isSearchable
+              allowCustomValue
+              width={28}
             />
           </div>
-          <div className={styles.field}>
-            <label className={styles.label}>Column</label>
-            <Input
-              value={rule.column}
-              onChange={(e) => update('column', e.currentTarget.value)}
-              placeholder="e.g. device_id or MAC address"
-              width={24}
-            />
-          </div>
+
           <div className={styles.field}>
             <label className={styles.label}>Aggregation</label>
             <Select

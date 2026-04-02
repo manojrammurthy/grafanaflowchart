@@ -212,6 +212,7 @@ function migrateAngularRule(oldRule: any, idx: number, warnings: string[]): Rule
     metricType: oldRule.metricType || 'series',
     pattern: oldRule.pattern || '.*',
     alias: oldRule.alias || '',
+    refId: oldRule.refId || '',
     column: oldRule.column || '',
     aggregation: oldRule.aggregation || 'current',
     thresholds,
