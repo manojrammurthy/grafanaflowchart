@@ -33,12 +33,13 @@ export function evaluateRule(
     return null;
   }
 
-  // Find metrics matching this rule's alias/pattern, with optional column filtering
+  // Find metrics matching this rule's alias/pattern, scoped by query refId and column
   const matched = findMatchingMetrics(
     metrics,
     rule.alias || rule.pattern,
     replaceVariables,
-    rule.column || undefined
+    rule.column || undefined,
+    rule.refId || undefined
   );
 
   if (matched.length === 0) {

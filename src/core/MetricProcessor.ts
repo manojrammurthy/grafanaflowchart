@@ -147,28 +147,35 @@ function groupByMetric(
 }
 
 /**
- * Find metrics matching a pattern/alias, optionally filtering by column name
+ * Find metrics matching a pattern/alias, optionally scoped by query refId and column name.
+ * Filtering order: refId (scope) → column (narrow) → alias/pattern (match).
  */
 export function findMatchingMetrics(
   metrics: ProcessedMetric[],
   alias: string,
   replaceVariables: (str: string) => string,
-  column?: string
+  column?: string,
+  refId?: string
 ): ProcessedMetric[] {
   let filtered = metrics;
 
-  // If column is specified, filter by column name first (exact match for MAC addresses etc.)
+  // Scope to a specific query first (exact refId match)
+  if (refId) {
+    const resolvedRefId = replaceVariables(refId);
+    const byRefId = filtered.filter((m) => m.refId === resolvedRefId);
+    if (byRefId.length > 0) {
+      filtered = byRefId;
+    }
+  }
+
+  // Narrow by column name (exact match for table/CSV columns)
   if (column) {
     const resolvedColumn = replaceVariables(column);
-    filtered = metrics.filter((m) => {
-      if (m.columnName === resolvedColumn) return true;
-      if (m.name === resolvedColumn) return true;
-      return false;
-    });
-
-    // If we found column matches, return those
-    if (filtered.length > 0) {
-      return filtered;
+    const byColumn = filtered.filter(
+      (m) => m.columnName === resolvedColumn || m.name === resolvedColumn
+    );
+    if (byColumn.length > 0) {
+      return byColumn;
     }
   }
 
