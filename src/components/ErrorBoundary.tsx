@@ -4,6 +4,7 @@
 
 import React, { Component, ErrorInfo, ReactNode } from 'react';
 import { css } from '@emotion/css';
+import { log } from '../utils/logging';
 
 interface Props {
   children: ReactNode;
@@ -27,7 +28,7 @@ export class FlowchartErrorBoundary extends Component<Props, State> {
   }
 
   componentDidCatch(error: Error, errorInfo: ErrorInfo): void {
-    console.error('[Flowcharting] Panel error:', error, errorInfo);
+    log.error('[Flowcharting] Panel error:', error, errorInfo);
     this.setState({ error, errorInfo });
   }
 
