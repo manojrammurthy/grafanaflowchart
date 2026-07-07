@@ -1,7 +1,7 @@
 {
   "type": "panel",
   "name": "Flowcharting",
-  "id": "flowcharting-complete",
+  "id": "manojramoorthy-flowcharting-panel",
   "info": {
     "description": "Draw.io/mxGraph diagram visualization with data-driven state (color, text, links, animations) from metric thresholds",
     "author": {
@@ -22,8 +22,8 @@
       "temperature",
       "monitoring"
     ],
-    "version": "1.0.0",
-    "updated": "2026-02-10",
+    "version": "2.0.1",
+    "updated": "2026-07-07",
     "logos": {
       "small": "img/logo.svg",
       "large": "img/logo.svg"

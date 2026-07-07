@@ -46,16 +46,16 @@ npm run build
 
 Copy the built plugin to Grafana:
 ```bash
-sudo mkdir -p /var/lib/grafana/plugins/manojflowcharting-flowcharting-panel
-sudo cp -r dist/* /var/lib/grafana/plugins/manojflowcharting-flowcharting-panel/
-sudo chown -R grafana:grafana /var/lib/grafana/plugins/manojflowcharting-flowcharting-panel/
+sudo mkdir -p /var/lib/grafana/plugins/manojramoorthy-flowcharting-panel
+sudo cp -r dist/* /var/lib/grafana/plugins/manojramoorthy-flowcharting-panel/
+sudo chown -R grafana:grafana /var/lib/grafana/plugins/manojramoorthy-flowcharting-panel/
 sudo systemctl restart grafana-server
 ```
 
 For unsigned development builds, add to `grafana.ini`:
 ```ini
 [plugins]
-allow_loading_unsigned_plugins = manojflowcharting-flowcharting-panel
+allow_loading_unsigned_plugins = manojramoorthy-flowcharting-panel
 ```
 
 ## Quick Start
